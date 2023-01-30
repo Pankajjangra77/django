@@ -1,0 +1,36 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<!-- <h1>
+    Welcome, {{name}} <br>
+    You are {{age}} years old <br>
+    You are {{nationality}}
+</h1> -->
+<!-- <h1>Input the text below</h1>
+<form method="post" action="counter">
+    {% csrf_token %}
+    <textarea name="text" rows="25" cols="120"></textarea><br>
+    <input type="submit" />
+</form> -->
+
+<div>
+    <div>
+        {% if user.is_authenticated %}
+        <div>
+            <h1>Welcome, {{user.username}}</h1>
+            <a href="logout">Logout</a>
+        </div>
+        {% else %}
+        <div>
+            <h1>Hi, anonymus</h1>
+            <a href="login">Login/Signup</a>
+        </div>
+        {% endif %}
+    </div>
+    
+    {% for feature in features %}
+    <div>
+        <h3>{{feature.name}}</h3>
+        <p>{{feature.details}}</p>
+    </div>
+    {% endfor %}
+</div>
